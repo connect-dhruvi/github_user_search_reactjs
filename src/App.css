@@ -1,0 +1,8 @@
+
+
+.nav{
+  background-color:ivory;
+  display: flex;
+  justify-content: center;
+  margin: 20px 5px;
+}
