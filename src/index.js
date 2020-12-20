@@ -8,13 +8,16 @@ import App3 from './App3';
 import App4 from './App4';
 import App5 from './App5';
 import { BrowserRouter as Router } from 'react-router-dom';
-
-//~import 'semantic-ui-css/semantic.min.css';
+import 'semantic-ui-css/semantic.min.css';
 
 ReactDOM.render(
-  <Router> <App5 />  </Router>
-  , document.getElementById('root')
-);
+  <App4/>, document.getElementById('root')
+  );
+
+// ReactDOM.render(
+//   <Router> <App5 />  </Router>
+//   , document.getElementById('root')
+// );
 
 // ReactDOM.render(
 // <React.Fragment>
