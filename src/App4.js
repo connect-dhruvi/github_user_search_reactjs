@@ -4,7 +4,7 @@ import './App.css';
 
 function App4() {
 
-    const [data, setData] = useState(null);
+   // const [data, setData] = useState(null);
     const [login, setLogin] = useState('');
     const [avatar, setAvatar] = useState('');
     const [url, setUrl] = useState('');
@@ -19,10 +19,14 @@ function App4() {
 
         fetch(`https://api.github.com/users/connect-dhruvi`)
             .then(res => res.json())
-            .then(data => setData(data))
-        
-        console.log(data);
-        //  console.log(data.login);
+            .then(data =>{
+                if (data) {
+                    handleData(data);
+                    console.log(data);
+                }})
+                
+             
+       
     },[])
     const handleChange = (e) => {
         setSearch(e.target.value);
@@ -31,16 +35,17 @@ function App4() {
     const handleSubmit = () => {
       fetch(`https://api.github.com/users/${search}`)
             .then(res => res.json())
-            .then(data => setData(data))
-        if (data) {
-            handleData(data);
-        }
-        console.log(data);
-        //  console.log(data.login);
-    }
+            .then(data =>{
+                if (data) {
+                    handleData(data);
+                console.log(data);
+
+                }})
+             }
       
     const handleData = ({ login, avatar_url, bio, html_url, followers, following, public_repos, location }) => {
         setLogin(login);
+        console.log(login);
         setAvatar(avatar_url);
         setUrl(html_url);
         setBio(bio);
@@ -57,8 +62,7 @@ function App4() {
                 <input type="text" onChange={handleChange} placeholder="Search By Username" />
             </div>
             <button className="ui primary button" onClick={handleSubmit}> Search </button></center> <br/>
-            {console.log(data)}
-            { data==null ? <h1> Not Found</h1> :
+            { login==null ? <h1> Not Found</h1> :
             <center>
                 <Card>
                 <Image src={avatar} wrapped ui={false} />
