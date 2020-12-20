@@ -4,7 +4,7 @@ import './App.css';
 
 function App4() {
 
-    const [data, setData] = useState();
+    const [data, setData] = useState(null);
     const [login, setLogin] = useState('');
     const [avatar, setAvatar] = useState('');
     const [url, setUrl] = useState('');
@@ -20,12 +20,10 @@ function App4() {
         fetch(`https://api.github.com/users/connect-dhruvi`)
             .then(res => res.json())
             .then(data => setData(data))
-        if (data) {
-            handleData(data);
-        }
+        
         console.log(data);
         //  console.log(data.login);
-    }, [])
+    },[])
     const handleChange = (e) => {
         setSearch(e.target.value);
     }
@@ -54,12 +52,13 @@ function App4() {
 
     return (
         <div>
-           <center><div className="nav"><h1> Github User Search </h1></div>
+           <center><div className="nav"><h1>Github User Search</h1></div>
            <div className="ui input focus ">
                 <input type="text" onChange={handleChange} placeholder="Search By Username" />
             </div>
-            <button className="ui primary button" onClick={handleSubmit}> Search </button></center> 
-            { data ?
+            <button className="ui primary button" onClick={handleSubmit}> Search </button></center> <br/>
+            {console.log(data)}
+            { data==null ? <h1> Not Found</h1> :
             <center>
                 <Card>
                 <Image src={avatar} wrapped ui={false} />
@@ -77,7 +76,9 @@ function App4() {
                   Followers {followers} <br/> Following : {following}
                   Github: <a> {url}</a>
                 </Card.Content>
-              </Card></center> :<h1> Not Found</h1> }
+              </Card>
+            </center> 
+            }
         </div>
             
     )

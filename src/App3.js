@@ -10,8 +10,8 @@ function App3() {
     
     return (
         <div>
-            <input type="checkbox" value={checked} onChange={toggle} />
-            <p>{checked ? "checked" : "not checked"}</p>
+            <input type="checkbox" id="ckbox" value={checked} onChange={toggle} />
+            <label htmlFor="ckbox">{checked ? "checked" : "not checked"}</label>
         </div>
     )
 }
