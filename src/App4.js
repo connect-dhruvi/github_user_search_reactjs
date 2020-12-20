@@ -53,6 +53,7 @@ function App4() {
         setFollowing(following);
         setRepos(public_repos);
         setLocation(location);
+        console.log(location);
     }
 
     return (
